@@ -74,5 +74,10 @@ angular.module('app.controllers', [])
     });
   };
 
-});
+})
 
+
+
+.controller('feedCtrl', function($scope) {
+
+});

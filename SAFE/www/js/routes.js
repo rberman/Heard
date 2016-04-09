@@ -8,19 +8,23 @@ angular.module('app.routes', [])
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-
-
-      .state('safe', {
+    .state('safe', {
     url: '/home',
     templateUrl: 'templates/safe.html',
     controller: 'safeCtrl'
-  })
+    })
 
-  .state('report', {
-    url: '/report',
-    templateUrl: 'templates/report.html',
-    controller: 'reportCtrl'
-  });
+    .state('report', {
+      url: '/report',
+      templateUrl: 'templates/report.html',
+      controller: 'reportCtrl'
+    })
+
+    .state('feed', {
+      url: '/feed',
+      templateUrl: 'templates/feed.html',
+      controller: 'feedCtrl'
+    });
 
 $urlRouterProvider.otherwise('/home')
 
