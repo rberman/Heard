@@ -7,23 +7,23 @@ angular.module('app.routes', [])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-    
-  
 
-      .state('sAFE', {
+
+
+      .state('safe', {
     url: '/home',
-    templateUrl: 'templates/sAFE.html',
-    controller: 'sAFECtrl'
+    templateUrl: 'templates/safe.html',
+    controller: 'safeCtrl'
   })
 
   .state('report', {
     url: '/report',
     templateUrl: 'templates/report.html',
     controller: 'reportCtrl'
-  })
+  });
 
 $urlRouterProvider.otherwise('/home')
 
-  
+
 
 });
