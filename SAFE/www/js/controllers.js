@@ -30,6 +30,26 @@ angular.module('app.controllers', [])
     });
 
     $scope.map = map;
+
+
+    google.maps.event.addListenerOnce($scope.map, 'idle', function(){
+      var latLng = new google.maps.LatLng(44.457101,  -93.154726);
+
+      var marker = new google.maps.Marker({
+        map: $scope.map,
+        animation: google.maps.Animation.DROP,
+        position: latLng,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/purple.png'
+      });
+
+      var infoWindow = new google.maps.InfoWindow({
+        content: "This was a report"
+      });
+
+      google.maps.event.addListener(marker, 'click', function () {
+        infoWindow.open($scope.map, marker);
+      });
+    });
   });
 
 })
