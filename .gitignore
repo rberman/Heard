@@ -1,0 +1,11 @@
+# Created by .ignore support plugin (hsz.mobi)
+
+node_modules/
+platforms/
+plugins/
+out
+build
+.gradle
+.idea/worksapce.xml
+.DS_Store
+local.properties
