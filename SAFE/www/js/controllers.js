@@ -1,10 +1,9 @@
 angular.module('app.controllers', [])
-  
-.controller('sAFECtrl', function($scope) {
+
+.controller('safeCtrl', function($scope) {
 
 })
-   
+
 .controller('reportCtrl', function($scope) {
 
 })
- 
