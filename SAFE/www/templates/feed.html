@@ -5,9 +5,9 @@
     </a>
   </ion-nav-buttons>
   <ion-content overflow-scroll="true" padding="true" class="has-header">
-    <div class="card" ng-repeat="report in ['report1', 'report2', 'report3']">
+    <div class="card" ng-repeat="report in reports">
       <div class="item item-text-wrap">
-        {{report}}
+        {{report.address}}
       </div>
     </div>
   </ion-content>

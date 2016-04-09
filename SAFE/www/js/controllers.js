@@ -98,6 +98,11 @@ angular.module('app.controllers', [])
 
 
 
-.controller('feedCtrl', function($scope) {
+.controller('feedCtrl', function($scope, Reports) {
+
+  Reports.query().$promise.then(function(data) {
+    $scope.reports = data;
+    console.log($scope.reports);
+  });
 
 });
