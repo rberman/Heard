@@ -18,6 +18,37 @@ angular.module('app.controllers', [])
     console.log($scope.reports);
   });
 
+  function displayMarkers() {
+    // For loop that runs through the info on markersData making it possible to createMarker function to create the markers
+    for (var i = 0; i < $scope.reports.length; i++) {
+
+      var latlng = new google.maps.LatLng($scope.reports[i].latitude, $scope.reports[i].longitude);
+      var description = $scope.reports[i].description;
+      var color = 'http://maps.google.com/mapfiles/ms/icons/purple.png'; //TODO add logic to determine color based on category
+      createMarker(latlng, description, color);
+    }
+  }
+
+  // This function creates each marker and sets their Info Window content
+  function createMarker(latlng, description, color){
+
+    var marker = new google.maps.Marker({
+      map: $scope.map,
+      position: latlng,
+      title: description,
+      icon: color
+    });
+
+    // This event expects a click on a marker
+    // When this event is fired the infowindow content is created
+    // and the infowindow is opened
+    google.maps.event.addListener(marker, 'click', function() {
+      $scope.infoWindow.setContent(description);
+      $scope.infoWindow.open($scope.map, marker);
+    });
+  }
+
+
   // Google maps
   $scope.initMap = function() {
     google.maps.event.addDomListener(window, 'load', function() {
@@ -30,6 +61,7 @@ angular.module('app.controllers', [])
       };
 
       var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+      var infoWindow = new google.maps.InfoWindow();
 
       navigator.geolocation.getCurrentPosition(function(pos) {
         map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
@@ -41,29 +73,17 @@ angular.module('app.controllers', [])
       });
 
       $scope.map = map;
-
+      $scope.infoWindow = infoWindow;
 
       google.maps.event.addListenerOnce($scope.map, 'idle', function(){
-        var latLng = new google.maps.LatLng(44.457101,  -93.154726);
-
-        var marker = new google.maps.Marker({
-          map: $scope.map,
-          animation: google.maps.Animation.DROP,
-          position: latLng,
-          icon: 'http://maps.google.com/mapfiles/ms/icons/purple.png'
+        google.maps.event.addListener($scope.map, 'click', function() {
+          $scope.infoWindow.close();
         });
 
-        var infoWindow = new google.maps.InfoWindow({
-          content: "This was a report"
-        });
-
-        google.maps.event.addListener(marker, 'click', function () {
-          infoWindow.open($scope.map, marker);
-        });
+        displayMarkers();
       });
     });
   }
-
 })
 
 .controller('reportCtrl', function($scope, $ionicPopup, $ionicLoading) {
