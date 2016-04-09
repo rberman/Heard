@@ -6,6 +6,7 @@ angular.module('app.controllers', [])
 })
 
 
+//  Cite https://www.thepolyglotdeveloper.com/2014/10/implement-google-maps-using-ionicframework/
 
 .controller('safeCtrl', function($scope, $ionicLoading) {
 
