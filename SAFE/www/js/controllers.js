@@ -1,12 +1,11 @@
 angular.module('app.controllers', [])
 
+//  Cite https://www.thepolyglotdeveloper.com/2014/10/implement-google-maps-using-ionicframework/
+//  Cite http://ionicframework.com/docs/api/service/$ionicPopup/
 
 .controller('reportCtrl', function($scope) {
 
 })
-
-
-//  Cite https://www.thepolyglotdeveloper.com/2014/10/implement-google-maps-using-ionicframework/
 
 .controller('safeCtrl', function($scope, $ionicLoading) {
 
@@ -35,7 +34,7 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('reportCtrl', function($scope, $ionicLoading) {
+.controller('reportCtrl', function($scope, $ionicPopup, $ionicLoading) {
 
   google.maps.event.addDomListener(window, 'load', function() {
     var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
@@ -60,4 +59,20 @@ angular.module('app.controllers', [])
     $scope.map = map;
   });
 
+  // A confirm dialog
+  $scope.showConfirm = function() {
+    var confirmPopup = $ionicPopup.confirm({
+      title: 'Call 911',
+      template: 'Are you sure you want to call 911?'
+    });
+    confirmPopup.then(function(res) {
+      if(res) {
+        document.location.href = 'tel:16504641779'
+      } else {
+        console.log('You are not sure');
+      }
+    });
+  };
+
 });
+
