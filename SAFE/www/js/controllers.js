@@ -7,8 +7,15 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('safeCtrl', function($scope, $ionicLoading) {
+.controller('safeCtrl', function($scope, $ionicLoading, Reports) {
 
+  // Load report data from API
+  Reports.query().$promise.then(function(data) {
+    $scope.reports = data;
+    console.log($scope.reports);
+  });
+
+  // Google maps
   google.maps.event.addDomListener(window, 'load', function() {
     var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
 
