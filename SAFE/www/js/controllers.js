@@ -7,11 +7,18 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('safeCtrl', function($scope, $ionicLoading) {
+.controller('safeCtrl', function($scope, $ionicLoading, Reports) {
   //$scope.$on( "$ionicView.enter", function() {
   //  google.maps.event.trigger( map, 'resize' );
   //});
 
+  // Load report data from API
+  Reports.query().$promise.then(function(data) {
+    $scope.reports = data;
+    console.log($scope.reports);
+  });
+
+  // Google maps
   $scope.initMap = function() {
     google.maps.event.addDomListener(window, 'load', function() {
       var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
