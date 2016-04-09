@@ -1,0 +1,31 @@
+<ion-view title="Report" id="page2">
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+        <a href="tel:6504641779" id="report-button3" class="button button-assertive button-large button-block">Call 911</a>
+        <div class="list card">
+            <div class="item item-body">
+                <form class="list">
+                    <label class="item item-input" name="locationSearch">
+                        <input type="text" placeholder="Search Locations">
+                    </label>
+                </form>
+            </div>
+        </div>
+        <form class="list">
+            <label class="item item-select" name="category">
+                <span class="input-label">Select Category</span>
+                <select>
+                    <option>Verbal Incident</option>
+                    <option>Physical Incident</option>
+                    <option>Other</option>
+                </select>
+            </label>
+        </form>
+        <form class="list">
+            <label class="item item-input" name="description">
+                <span class="input-label">Description</span>
+                <input type="text" placeholder="What happened?">
+            </label>
+        </form>
+        <a ui-sref="sAFE" id="report-button4" class="button button-balanced  button-block">Submit</a>
+    </ion-content>
+</ion-view>
