@@ -19,6 +19,12 @@
   margin-right: 25px;
 }
 
+.called911-tag {
+  float: right;
+  font-size: 30px;
+  margin-left: 5px;
+}
+
 .report-text {
 }
 

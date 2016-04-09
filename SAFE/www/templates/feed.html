@@ -8,6 +8,7 @@
     <div class="card " ng-repeat="report in reports">
       <div class="item item-text-wrap">
         <i class="icon ion-ios-pricetag category-tag {{getColor(report.category_id)}}"></i>
+        <i class="icon ion-alert called911-tag assertive" ng-if="report.called_911 == true"></i>
         <span class="report-text">
           <strong> Location:</strong> {{report.address}} <br>
           <strong> Description: </strong> {{report.description}}
