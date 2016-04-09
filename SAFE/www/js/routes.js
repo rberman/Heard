@@ -9,15 +9,17 @@ angular.module('app.routes', [])
   $stateProvider
 
     .state('safe', {
-    url: '/home',
-    templateUrl: 'templates/safe.html',
-    controller: 'safeCtrl'
+      url: '/home',
+      templateUrl: 'templates/safe.html',
+      controller: 'safeCtrl',
+      cache: false
     })
 
     .state('report', {
       url: '/report',
       templateUrl: 'templates/report.html',
-      controller: 'reportCtrl'
+      controller: 'reportCtrl',
+      cache: false
     })
 
     .state('feed', {

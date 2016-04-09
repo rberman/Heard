@@ -8,76 +8,84 @@ angular.module('app.controllers', [])
 })
 
 .controller('safeCtrl', function($scope, $ionicLoading) {
+  //$scope.$on( "$ionicView.enter", function() {
+  //  google.maps.event.trigger( map, 'resize' );
+  //});
 
-  google.maps.event.addDomListener(window, 'load', function() {
-    var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
+  $scope.initMap = function() {
+    google.maps.event.addDomListener(window, 'load', function() {
+      var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
 
-    var mapOptions = {
-      center: myLatlng,
-      zoom: 16,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
+      var mapOptions = {
+        center: myLatlng,
+        zoom: 16,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
 
-    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-    navigator.geolocation.getCurrentPosition(function(pos) {
-      map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-      var myLocation = new google.maps.Marker({
-        position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
-        map: map,
-        title: "My Location"
+      navigator.geolocation.getCurrentPosition(function(pos) {
+        map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+        var myLocation = new google.maps.Marker({
+          position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+          map: map,
+          title: "My Location"
+        });
+      });
+
+      $scope.map = map;
+
+
+      google.maps.event.addListenerOnce($scope.map, 'idle', function(){
+        var latLng = new google.maps.LatLng(44.457101,  -93.154726);
+
+        var marker = new google.maps.Marker({
+          map: $scope.map,
+          animation: google.maps.Animation.DROP,
+          position: latLng,
+          icon: 'http://maps.google.com/mapfiles/ms/icons/purple.png'
+        });
+
+        var infoWindow = new google.maps.InfoWindow({
+          content: "This was a report"
+        });
+
+        google.maps.event.addListener(marker, 'click', function () {
+          infoWindow.open($scope.map, marker);
+        });
       });
     });
-
-    $scope.map = map;
-
-
-    google.maps.event.addListenerOnce($scope.map, 'idle', function(){
-      var latLng = new google.maps.LatLng(44.457101,  -93.154726);
-
-      var marker = new google.maps.Marker({
-        map: $scope.map,
-        animation: google.maps.Animation.DROP,
-        position: latLng,
-        icon: 'http://maps.google.com/mapfiles/ms/icons/purple.png'
-      });
-
-      var infoWindow = new google.maps.InfoWindow({
-        content: "This was a report"
-      });
-
-      google.maps.event.addListener(marker, 'click', function () {
-        infoWindow.open($scope.map, marker);
-      });
-    });
-  });
+  }
 
 })
 
 .controller('reportCtrl', function($scope, $ionicPopup, $ionicLoading) {
 
-  google.maps.event.addDomListener(window, 'load', function() {
-    var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
+  $scope.initReportMap = function() {
+    google.maps.event.addDomListener(window, 'load', function() {
+      var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
 
-    var mapOptions = {
-      center: myLatlng,
-      zoom: 16,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
+      var mapOptions = {
+        center: myLatlng,
+        zoom: 16,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
 
-    var map = new google.maps.Map(document.getElementById("report-map"), mapOptions);
+      var map = new google.maps.Map(document.getElementById("report-map"), mapOptions);
 
-    navigator.geolocation.getCurrentPosition(function(pos) {
-      map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-      var myLocation = new google.maps.Marker({
-        position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
-        map: map,
-        title: "My Location"
+      navigator.geolocation.getCurrentPosition(function(pos) {
+        map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+        var myLocation = new google.maps.Marker({
+          position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+          map: map,
+          title: "My Location"
+        });
       });
-    });
 
-    $scope.map = map;
-  });
+      $scope.map = map;
+    });
+  };
+
 
   // A confirm dialog
   $scope.showConfirm = function() {
@@ -93,7 +101,6 @@ angular.module('app.controllers', [])
       }
     });
   };
-
 })
 
 
