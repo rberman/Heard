@@ -1,6 +1,6 @@
 <ion-view title="Feed" id="page3">
   <ion-nav-buttons side="left">
-    <a class="button button-dark" href="#/safe">
+    <a class="button nav-button" href="#/safe">
       Home
     </a>
   </ion-nav-buttons>
@@ -9,10 +9,10 @@
       <div class="item item-text-wrap">
         <i class="icon ion-ios-pricetag category-tag {{getColor(report.category_id)}}"></i>
         <i class="icon ion-alert called911-tag assertive" ng-if="report.called_911 == true"></i>
-        <span class="report-text">
+        <div class="report-text">
           <strong> Location:</strong> {{report.address}} <br>
           <strong> Description: </strong> {{report.description}}
-        </span>
+        </div>
       </div>
     </div>
   </ion-content>

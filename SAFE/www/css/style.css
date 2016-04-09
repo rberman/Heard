@@ -25,6 +25,33 @@
   margin-left: 5px;
 }
 
+.primary-color {
+  color: #cc0000;
+}
+
+.secondary-color {
+  color: #863894;
+}
+
+.tertiary-color {
+  color: #1976D2;
+}
+
+.nav-button {
+  background: #863894 !important;
+  color: white !important;
+}
+
+.main-button {
+  background: #1976D2 !important;
+  color: white !important;
+}
+
+.important-button {
+  background: #cc0000 !important;
+  color: white !important;
+}
+
 .report-text {
 }
 

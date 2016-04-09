@@ -1,7 +1,7 @@
 <ion-view title="Report" id="page2">
     <ion-content overflow-scroll="true" padding="true" class="has-header" ng-init="initReportMap()">
       <a ng-click="showConfirm()" id="report-button3"
-         class="button button-assertive button-large button-block">Call 911</a>
+         class="button important-button button-large button-block">Call 911</a>
       <div id="report-map" data-tap-disabled="true"></div>
       <div class="list card">
             <div class="item item-body">
@@ -29,6 +29,6 @@
                 <input type="text" ng-model="string" placeholder="What happened?">
             </label>
         </form>
-        <a ui-sref="safe" id="report-button4" class="button button-balanced  button-block">Submit</a>
+        <a ui-sref="safe" id="report-button4" class="button main-button button-block">Submit</a>
     </ion-content>
 </ion-view>

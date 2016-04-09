@@ -120,9 +120,9 @@ angular.module('app.controllers', [])
   });
 
   $scope.getColor = function(category_id) {
-    if (category_id == 1) return "calm"; // verbal
-    if (category_id == 2) return "balanced"; // physical
-    if (category_id == 3) return "royal"; // other
+    if (category_id == 1) return "secondary-color"; // verbal
+    if (category_id == 2) return "primary-color"; // physical
+    if (category_id == 3) return "tertiary-color"; // other
   }
 
 });
