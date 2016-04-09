@@ -112,4 +112,10 @@ angular.module('app.controllers', [])
     console.log($scope.reports);
   });
 
+  $scope.getColor = function(category_id) {
+    if (category_id == 1) return "calm"; // verbal
+    if (category_id == 2) return "balanced"; // physical
+    if (category_id == 3) return "royal"; // other
+  }
+
 });

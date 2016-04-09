@@ -5,9 +5,13 @@
     </a>
   </ion-nav-buttons>
   <ion-content overflow-scroll="true" padding="true" class="has-header">
-    <div class="card" ng-repeat="report in reports">
+    <div class="card " ng-repeat="report in reports">
       <div class="item item-text-wrap">
-        {{report.address}}
+        <i class="icon ion-ios-pricetag category-tag {{getColor(report.category_id)}}"></i>
+        <span class="report-text">
+          <strong> Location:</strong> {{report.address}} <br>
+          <strong> Description: </strong> {{report.description}}
+        </span>
       </div>
     </div>
   </ion-content>
