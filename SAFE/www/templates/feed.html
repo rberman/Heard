@@ -5,6 +5,16 @@
     </a>
   </ion-nav-buttons>
   <ion-content overflow-scroll="true" padding="true" class="has-header">
+    <div class="card">
+      <div class="item item-text-wrap" style="display: flex;">
+        <div class="pull-right feed-report">
+          <i class="icon ion-ios-pricetag disp-icon {{getColor(1)}}"> Verbal</i>
+          <i class="icon ion-ios-pricetag disp-icon {{getColor(2)}}"> Physical</i>
+          <i class="icon ion-ios-pricetag disp-icon {{getColor(3)}}"> Other</i>
+          <i class="icon ion-alert disp-icon energized"> 911 Call</i>
+        </div>
+      </div>
+    </div>
 
     <!--Report-->
     <div class="card " ng-repeat="report in reports">
