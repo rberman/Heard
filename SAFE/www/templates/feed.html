@@ -5,8 +5,12 @@
     </a>
   </ion-nav-buttons>
   <ion-content overflow-scroll="true" padding="true" class="has-header">
+
+    <!--Report-->
     <div class="card " ng-repeat="report in reports">
       <div class="item item-text-wrap" style="display: flex;">
+
+        <!--Color tag for category-->
         <div class="pull-right feed-report">
           <i class="icon ion-ios-pricetag category-tag {{getColor(report.category_id)}}"></i>
         </div>
@@ -16,6 +20,7 @@
           <strong> Date: </strong> {{report.created_at | date: 'short'}} <br>
         </div>
 
+        <!--Exclamation Point (if called 911)-->
         <div class="pull-left report-text">
           <i class="icon ion-alert called911-tag energized" ng-if="report.called_911 == true"></i>
         </div>
