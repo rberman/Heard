@@ -51,7 +51,7 @@ angular.module('app.controllers', [])
 
   // Google maps
   $scope.initMap = function() {
-    google.maps.event.addDomListener(window, 'load', function() {
+    //google.maps.event.addDomListener(window, 'load', function() {
       var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
 
       var mapOptions = {
@@ -82,14 +82,14 @@ angular.module('app.controllers', [])
 
         displayMarkers();
       });
-    });
+    //});
   }
 })
 
 .controller('reportCtrl', function($scope, $ionicPopup, $ionicLoading) {
 
   $scope.initReportMap = function() {
-    google.maps.event.addDomListener(window, 'load', function() {
+    //google.maps.event.addDomListener(window, 'load', function() {
       var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
 
       var mapOptions = {
@@ -110,7 +110,7 @@ angular.module('app.controllers', [])
       });
 
       $scope.map = map;
-    });
+    //});
   };
 
 
