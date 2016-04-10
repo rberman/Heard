@@ -18,6 +18,7 @@ angular.module('app.controllers', [])
     console.log($scope.reports);
   });
 
+  // Display the markers on the map
   function displayMarkers() {
     // For loop that runs through the info on markersData making it possible to createMarker function to create the markers
     for (var i = 0; i < $scope.reports.length; i++) {
@@ -28,7 +29,7 @@ angular.module('app.controllers', [])
     }
   }
 
-  // This function creates each marker and sets their Info Window content
+  // Creates each marker and sets info window content
   function createMarker(latlng, description, color){
     var marker = new google.maps.Marker({
       map: $scope.map,
@@ -52,7 +53,7 @@ angular.module('app.controllers', [])
     // Create the search box and link it to the UI element.
     var input = document.getElementById('searchBox');
     var searchBox = new google.maps.places.SearchBox(input);
-    $scope.map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    //$scope.map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(input); //puts search bar in map window
 
     // Bias the SearchBox results towards current map's viewport.
     $scope.map.addListener('bounds_changed', function () {
@@ -98,7 +99,7 @@ angular.module('app.controllers', [])
     });
   }
 
-  // Google maps
+  // Google maps map initiation function
   $scope.initMap = function() {
     //google.maps.event.addDomListener(window, 'load', function() {
       var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
@@ -109,24 +110,24 @@ angular.module('app.controllers', [])
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
 
-      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+      $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
       var infoWindow = new google.maps.InfoWindow();
 
       navigator.geolocation.getCurrentPosition(function(pos) {
-        map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+        $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
         var myLocation = new google.maps.Marker({
           position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
-          map: map,
+          map: $scope.map,
           title: "My Location"
         });
       });
 
-      $scope.map = map;
+      initAutocomplete(); //can init once map scope variable is defined
+
       $scope.infoWindow = infoWindow;
 
       google.maps.event.addListenerOnce($scope.map, 'idle', function(){
         displayMarkers();
-        initAutocomplete();
         google.maps.event.addListener($scope.map, 'click', function() {
           $scope.infoWindow.close();
         });
