@@ -12,36 +12,40 @@
         Call 911
       </a>
 
+
+
       <!--Google Map for reporting incident-->
       <h4 style="font-family: 'Verdana', 'sans-serif'; color: grey">Drag pin to location of incident:</h4>
-      <div id="report-map" data-tap-disabled="true"></div>
-                <form class="list">
-                    <label class="item item-input" name="locationSearch">
-                        <input type="text" ng-model="string" placeholder="Search Locations">
-                    </label>
-                </form>
+      <!--Search box-->
+      <label class="item item-input" name="locationSearch">
+        <input id="searchBox" class="item item-input" type="text" ng-model="string" placeholder="Search for a location...">
+      </label>
 
-        <!--Select category-->
-        <form class="list">
-            <label class="item item-select" name="category">
-                <span class="input-label">Select Category</span>
-                <select ng-model="category" ng-change="selectCategory(category)">
-                    <option value="1">Verbal Incident</option>
-                    <option value="2">Physical Incident</option>
-                    <option value="3">Other</option>
-                </select>
-            </label>
-        </form>
+      <div id="report-map" data-tap-disabled="true" class="item"></div>
+
+      <br> <!--TODO Hack solution lol-->
+
+      <!--Select category-->
+      <form class="list">
+          <label class="item item-select" name="category">
+              <span class="input-label">Select Category</span>
+              <select ng-model="category" ng-change="selectCategory(category)">
+                  <option value="1">Verbal Incident</option>
+                  <option value="2">Physical Incident</option>
+                  <option value="3">Other</option>
+              </select>
+          </label>
+      </form>
 
       <!--Write description-->
-        <form class="list">
-            <label class="item item-input" name="description">
-                <span class="input-label">Description</span>
-                <input type="text" ng-model="description" placeholder="What happened?">
-            </label>
-        </form>
+      <form class="list">
+          <label class="item item-input" name="description">
+              <span class="input-label">Description</span>
+              <input type="text" ng-model="description" placeholder="What happened?">
+          </label>
+      </form>
 
       <!--Submit button-->
-        <input type="submit" value="Report" ng-click="submitReport(category, description)" id="report-button4" class="button important-button button-block">
+      <input type="submit" value="Report" ng-click="submitReport(category, description)" id="report-button4" class="button important-button button-block">
     </ion-content>
 </ion-view>
