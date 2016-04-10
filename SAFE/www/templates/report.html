@@ -1,34 +1,34 @@
 <ion-view title="Report" id="page2">
     <ion-content overflow-scroll="true" padding="true" class="has-header" ng-init="initReportMap()">
       <a ng-click="showConfirm()" id="report-button3"
-         class="button important-button button-large button-block">Call 911</a>
+         class="button important-button button-large button-block">
+        Call 911
+      </a>
+      <h4 style="font-family: 'Verdana', 'sans-serif'">Location of Incident:</h4>
       <div id="report-map" data-tap-disabled="true"></div>
-      <div class="list card">
-            <div class="item item-body">
                 <form class="list">
                     <label class="item item-input" name="locationSearch">
                         <input type="text" ng-model="string" placeholder="Search Locations">
                     </label>
                 </form>
-            </div>
-        </div>
+
 
         <form class="list">
             <label class="item item-select" name="category">
                 <span class="input-label">Select Category</span>
-                <select>
-                    <option>Verbal Incident</option>
-                    <option>Physical Incident</option>
-                    <option>Other</option>
+                <select ng-model="category" ng-change="selectCategory(category)">
+                    <option value="1">Verbal Incident</option>
+                    <option value="2">Physical Incident</option>
+                    <option value="3">Other</option>
                 </select>
             </label>
         </form>
         <form class="list">
             <label class="item item-input" name="description">
                 <span class="input-label">Description</span>
-                <input type="text" ng-model="string" placeholder="What happened?">
+                <input type="text" ng-model="description" placeholder="What happened?">
             </label>
         </form>
-        <a ui-sref="safe" id="report-button4" class="button main-button button-block">Submit</a>
+        <input type="submit" value="Report" ng-click="submitReport(category, description)" id="report-button4" class="button main-button button-block">
     </ion-content>
 </ion-view>

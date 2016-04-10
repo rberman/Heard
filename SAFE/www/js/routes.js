@@ -25,7 +25,8 @@ angular.module('app.routes', [])
     .state('feed', {
       url: '/feed',
       templateUrl: 'templates/feed.html',
-      controller: 'feedCtrl'
+      controller: 'feedCtrl',
+      cache: false
     });
 
 $urlRouterProvider.otherwise('/home')
