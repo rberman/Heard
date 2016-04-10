@@ -21,7 +21,6 @@ angular.module('app.controllers', [])
   function displayMarkers() {
     // For loop that runs through the info on markersData making it possible to createMarker function to create the markers
     for (var i = 0; i < $scope.reports.length; i++) {
-
       var latlng = new google.maps.LatLng($scope.reports[i].latitude, $scope.reports[i].longitude);
       var description = $scope.reports[i].description;
       var color = 'http://maps.google.com/mapfiles/ms/icons/purple.png'; //TODO add logic to determine color based on category
@@ -31,7 +30,6 @@ angular.module('app.controllers', [])
 
   // This function creates each marker and sets their Info Window content
   function createMarker(latlng, description, color){
-
     var marker = new google.maps.Marker({
       map: $scope.map,
       position: latlng,
@@ -43,7 +41,8 @@ angular.module('app.controllers', [])
     // When this event is fired the infowindow content is created
     // and the infowindow is opened
     google.maps.event.addListener(marker, 'click', function() {
-      $scope.infoWindow.setContent(description);
+      var contentString = "description: " + description;
+      $scope.infoWindow.setContent(contentString);
       $scope.infoWindow.open($scope.map, marker);
     });
   }
@@ -87,6 +86,7 @@ angular.module('app.controllers', [])
 })
 
 .controller('reportCtrl', function($scope, $ionicPopup, Reports) {
+  $scope.called_911 = false;
 
   $scope.initReportMap = function() {
     //google.maps.event.addDomListener(window, 'load', function() {
@@ -116,11 +116,9 @@ angular.module('app.controllers', [])
   };
 
   // Handles change of drop-down menu selection
-  $scope.selectCategory = function(category) {
-    console.log(category);
-  };
+  $scope.selectCategory = function(category) {};
 
-  // A confirm dialog
+  // A confirm dialog for call button
   $scope.showConfirm = function() {
     var confirmPopup = $ionicPopup.confirm({
       title: 'Call 911',
@@ -128,7 +126,8 @@ angular.module('app.controllers', [])
     });
     confirmPopup.then(function(res) {
       if(res) {
-        document.location.href = 'tel:16504641779'
+        $scope.called_911 = true;
+        document.location.href = 'tel:16504641779';
       } else {
         console.log('You are not sure');
       }
@@ -140,10 +139,9 @@ angular.module('app.controllers', [])
   $scope.submitReport = function(category, description) {
     var lat = $scope.myLocation.getPosition().lat();
     var lon = $scope.myLocation.getPosition().lng();
-    var called_911 = false; //TODO haven't gotten actual value
 
-    Reports.post({latitude: lat, longitude: lon, called_911: called_911, category_id: category, description: description});
-
+    Reports.post({latitude: lat, longitude: lon, called_911: $scope.called_911, category_id: category, description: description});
+    console.log("called 911: " + $scope.called_911);
     console.log("Posted successfully");
     document.location.href = '#/main';
   };
