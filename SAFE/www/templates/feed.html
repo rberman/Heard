@@ -6,12 +6,16 @@
   </ion-nav-buttons>
   <ion-content overflow-scroll="true" padding="true" class="has-header">
     <div class="card " ng-repeat="report in reports">
-      <div class="item item-text-wrap">
-        <i class="icon ion-ios-pricetag category-tag {{getColor(report.category_id)}}"></i>
-        <i class="icon ion-alert called911-tag assertive" ng-if="report.called_911 == true"></i>
+      <div class="item item-text-wrap" style="display: flex;">
+        <div class="pull-right"  style="margin-top: auto; margin-bottom: auto;">
+          <i class="icon ion-ios-pricetag category-tag {{getColor(report.category_id)}}"></i>
+        </div>
         <div class="report-text">
           <strong> Location:</strong> {{report.address}} <br>
           <strong> Description: </strong> {{report.description}}
+        </div>
+        <div class="pull-left" style="margin-top: auto; margin-bottom: auto;">
+          <i class="icon ion-alert called911-tag assertive" ng-if="report.called_911 == true"></i>
         </div>
       </div>
     </div>
