@@ -5,8 +5,12 @@
     </a>
   </ion-nav-buttons>
   <ion-content overflow-scroll="true" padding="true" class="has-header">
+
+    <!--Report-->
     <div class="card " ng-repeat="report in reports">
       <div class="item item-text-wrap" style="display: flex;">
+
+        <!--Color tag for category-->
         <div class="pull-right feed-report">
           <i class="icon ion-ios-pricetag category-tag {{getColor(report.category_id)}}"></i>
         </div>
@@ -15,14 +19,25 @@
           <strong> Description: </strong> {{report.description}} <br>
         </div>
 
+        <!--Exclamation Point (if called 911)-->
         <div class="pull-left report-text">
           <i class="icon ion-alert called911-tag energized" ng-if="report.called_911 == true"></i>
         </div> <br>
       </div>
-      <div class="comments" class="item item-text-wrap" style="display: flex;">
-          Here is my comment
+
+      <!--First comment-->
+      <!--TODO: ng-if there is at least one comment-->
+      <div ng-if="true" class="comments item item-text-wrap">
+          First comment <br>
+        <!--TODO: ng-if there is more than one comment-->
+          <button ng-if="true" ng-hide="clicked" ng-click="showAllComments()">View more</button>
       </div>
-      <label class="item item-input " name="comment">
+      <!--Other comments-->
+      <!--TODO: Update ng-repeat to display the rest of comments-->
+      <div ng-hide="commentsNotExpanded" ng-repeat="second comment in comments" class="comments item item-text-wrap">
+        Extra comments
+      </div>
+      <label class="item item-input" name="comment">
         <input type="text" ng-model="string" placeholder="Comment...">
       </label>
     </div>
