@@ -86,7 +86,7 @@ angular.module('app.controllers', [])
   }
 })
 
-.controller('reportCtrl', function($scope, $ionicPopup, $ionicLoading) {
+.controller('reportCtrl', function($scope, $ionicPopup, Reports) {
 
   $scope.initReportMap = function() {
     google.maps.event.addDomListener(window, 'load', function() {
@@ -99,13 +99,15 @@ angular.module('app.controllers', [])
       };
 
       var map = new google.maps.Map(document.getElementById("report-map"), mapOptions);
+      //$scope.myLocation = new google.maps.Marker();
 
       navigator.geolocation.getCurrentPosition(function(pos) {
         map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-        var myLocation = new google.maps.Marker({
+        $scope.myLocation = new google.maps.Marker({
           position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
           map: map,
-          title: "My Location"
+          title: "My Location",
+          draggable: true
         });
       });
 
@@ -113,6 +115,10 @@ angular.module('app.controllers', [])
     });
   };
 
+  // Handles change of drop-down menu selection
+  $scope.selectCategory = function(category) {
+    console.log(category);
+  };
 
   // A confirm dialog
   $scope.showConfirm = function() {
@@ -128,8 +134,20 @@ angular.module('app.controllers', [])
       }
     });
   };
-})
 
+
+  // Submit report data
+  $scope.submitReport = function(category, description) {
+    var lat = $scope.myLocation.getPosition().lat();
+    var lon = $scope.myLocation.getPosition().lng();
+    var called_911 = false; //TODO haven't gotten actual value
+
+    Reports.post({latitude: lat, longitude: lon, called_911: called_911, category_id: category, description: description});
+
+    console.log("Posted successfully");
+    document.location.href = '#/main';
+  };
+})
 
 
 .controller('feedCtrl', function($scope, Reports) {

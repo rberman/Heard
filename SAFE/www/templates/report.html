@@ -16,19 +16,19 @@
         <form class="list">
             <label class="item item-select" name="category">
                 <span class="input-label">Select Category</span>
-                <select>
-                    <option>Verbal Incident</option>
-                    <option>Physical Incident</option>
-                    <option>Other</option>
+                <select ng-model="category" ng-change="selectCategory(category)">
+                    <option value="1">Verbal Incident</option>
+                    <option value="2">Physical Incident</option>
+                    <option value="3">Other</option>
                 </select>
             </label>
         </form>
         <form class="list">
             <label class="item item-input" name="description">
                 <span class="input-label">Description</span>
-                <input type="text" ng-model="string" placeholder="What happened?">
+                <input type="text" ng-model="description" placeholder="What happened?">
             </label>
         </form>
-        <a ui-sref="safe" id="report-button4" class="button button-balanced  button-block">Submit</a>
+        <input type="submit" value="Report" ng-click="submitReport(category, description)" id="report-button4" class="button button-balanced  button-block"> <!--ui-sref="safe"-->
     </ion-content>
 </ion-view>
