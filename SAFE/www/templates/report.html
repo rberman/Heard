@@ -1,15 +1,15 @@
 <ion-view title="Report" id="page2">
   <ion-nav-buttons side="left">
     <a class="button nav-button" href="#/safe">
-      <strong>Home</strong>
+      Home
     </a>
   </ion-nav-buttons>
     <ion-content overflow-scroll="true" padding="true" class="has-header" ng-init="initReportMap()">
       <a ng-click="showConfirm()" id="report-button3"
          class="button important-button button-large button-block">
-        <strong>Call 911</strong>
+        Call 911
       </a>
-      <h4 style="font-family: 'Verdana', 'sans-serif'">Location of Incident:</h4>
+      <h4 style="font-family: 'Verdana', 'sans-serif'; color: grey">Drag pin to location of incident:</h4>
       <div id="report-map" data-tap-disabled="true"></div>
                 <form class="list">
                     <label class="item item-input" name="locationSearch">
@@ -34,6 +34,6 @@
                 <input type="text" ng-model="description" placeholder="What happened?">
             </label>
         </form>
-        <input type="submit" value="Report" ng-click="submitReport(category, description)" id="report-button4" class="button main-button button-block">
+        <input type="submit" value="Report" ng-click="submitReport(category, description)" id="report-button4" class="button important-button button-block">
     </ion-content>
 </ion-view>
