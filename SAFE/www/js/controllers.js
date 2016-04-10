@@ -41,7 +41,7 @@ angular.module('app.controllers', [])
     // When this event is fired the infowindow content is created
     // and the infowindow is opened
     google.maps.event.addListener(marker, 'click', function() {
-      var contentString = "description: " + description;
+      var contentString = "<strong>Incident</strong>: " + description;
       $scope.infoWindow.setContent(contentString);
       $scope.infoWindow.open($scope.map, marker);
     });

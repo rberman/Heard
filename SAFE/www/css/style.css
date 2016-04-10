@@ -56,7 +56,14 @@
   font-size: 16pt !important;
 }
 
-.report-text {
+.feed-report {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+
+.comments {
+  padding: 10px;
+  display: flex;
 }
 
 #searchBox {
