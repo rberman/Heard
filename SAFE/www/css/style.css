@@ -3,6 +3,10 @@
   height: 100%;
 }
 
+.bar-positive {
+  background: #5a163a !important;
+}
+
 #map {
   width: 100%;
   height: 80%;
@@ -26,11 +30,11 @@
 }
 
 .primary-color {
-  color: #cc0000;
+  color: rgb(255, 241, 111);
 }
 
 .secondary-color {
-  color: #863894;
+  color: #731850;
 }
 
 .tertiary-color {
@@ -38,8 +42,8 @@
 }
 
 .nav-button {
-  background: #863894 !important;
-  color: white !important;
+  background: rgb(255, 241, 111) !important;
+  color: #731850 !important;
 }
 
 .main-button {
@@ -48,8 +52,9 @@
 }
 
 .important-button {
-  background: #cc0000 !important;
-  color: white !important;
+  background: rgb(255, 241, 111) !important;
+  color: #731850 !important;
+  font-size: 16pt !important;
 }
 
 .report-text {

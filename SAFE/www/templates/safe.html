@@ -1,17 +1,17 @@
 <ion-view title="SAFE" id="page1">
   <ion-nav-buttons side="right">
     <a class="button nav-button" href="#/feed">
-      Feed
+      <strong>Feed</strong>
     </a>
   </ion-nav-buttons>
     <ion-content overflow-scroll="true" padding="true" class="has-header" ng-init="initMap()">
-        <form class="list">
+        <form class="list" style="margin-bottom: 0px">
             <label class="item item-input" name="locationSearch">
                 <input type="text" ng-model="string" placeholder="Search">
             </label>
         </form>
         <div id="map" data-tap-disabled="true"></div>
-        <a ui-sref="report" id="safe-button1" class="button main-button  button-block">Report</a>
+        <a ui-sref="report" id="safe-button1" class="button important-button  button-block"><strong>Report</strong></a>
     </ion-content>
 </ion-view>
 
