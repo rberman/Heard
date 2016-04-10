@@ -47,6 +47,56 @@ angular.module('app.controllers', [])
     });
   }
 
+  // Google Map Search Box with Autocomplete
+  function initAutocomplete() {
+    // Create the search box and link it to the UI element.
+    var input = document.getElementById('searchBox');
+    var searchBox = new google.maps.places.SearchBox(input);
+    $scope.map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+    // Bias the SearchBox results towards current map's viewport.
+    $scope.map.addListener('bounds_changed', function () {
+      searchBox.setBounds($scope.map.getBounds());
+    });
+
+    var markers = [];
+    // Listen for the event fired when the user selects a prediction and retrieve
+    // more details for that place.
+    searchBox.addListener('places_changed', function () {
+      var places = searchBox.getPlaces();
+
+      if (places.length == 0) {
+        return;
+      }
+
+      // Clear out the old markers.
+      markers.forEach(function (marker) {
+        marker.setMap(null);
+      });
+      markers = [];
+
+      // For each place, get the icon, name and location.
+      var bounds = new google.maps.LatLngBounds();
+      places.forEach(function (place) {
+
+        // Create a marker for each place.
+        markers.push(new google.maps.Marker({
+          map: $scope.map,
+          title: place.name,
+          position: place.geometry.location
+        }));
+
+        if (place.geometry.viewport) {
+          // Only geocodes have viewport.
+          bounds.union(place.geometry.viewport);
+        } else {
+          bounds.extend(place.geometry.location);
+        }
+      });
+      $scope.map.fitBounds(bounds);
+      $scope.map.setZoom(16);
+    });
+  }
 
   // Google maps for home page
   $scope.initMap = function() {
@@ -74,11 +124,11 @@ angular.module('app.controllers', [])
       $scope.infoWindow = infoWindow;
 
       google.maps.event.addListenerOnce($scope.map, 'idle', function(){
+        displayMarkers();
+        initAutocomplete();
         google.maps.event.addListener($scope.map, 'click', function() {
           $scope.infoWindow.close();
         });
-
-        displayMarkers();
       });
   }
 })
