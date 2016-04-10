@@ -51,7 +51,7 @@ angular.module('app.controllers', [])
 
   // Google maps
   $scope.initMap = function() {
-    google.maps.event.addDomListener(window, 'load', function() {
+    //google.maps.event.addDomListener(window, 'load', function() {
       var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
 
       var mapOptions = {
@@ -82,14 +82,14 @@ angular.module('app.controllers', [])
 
         displayMarkers();
       });
-    });
+    //});
   }
 })
 
 .controller('reportCtrl', function($scope, $ionicPopup, Reports) {
 
   $scope.initReportMap = function() {
-    google.maps.event.addDomListener(window, 'load', function() {
+    //google.maps.event.addDomListener(window, 'load', function() {
       var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
 
       var mapOptions = {
@@ -112,7 +112,7 @@ angular.module('app.controllers', [])
       });
 
       $scope.map = map;
-    });
+    //});
   };
 
   // Handles change of drop-down menu selection
@@ -158,9 +158,9 @@ angular.module('app.controllers', [])
   });
 
   $scope.getColor = function(category_id) {
-    if (category_id == 1) return "calm"; // verbal
-    if (category_id == 2) return "balanced"; // physical
-    if (category_id == 3) return "royal"; // other
+    if (category_id == 1) return "secondary-color"; // verbal
+    if (category_id == 2) return "primary-color"; // physical
+    if (category_id == 3) return "tertiary-color"; // other
   }
 
 });

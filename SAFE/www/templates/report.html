@@ -1,17 +1,17 @@
 <ion-view title="Report" id="page2">
     <ion-content overflow-scroll="true" padding="true" class="has-header" ng-init="initReportMap()">
       <a ng-click="showConfirm()" id="report-button3"
-         class="button button-assertive button-large button-block">Call 911</a>
+         class="button important-button button-large button-block">
+        Call 911
+      </a>
+      <h4 style="font-family: 'Verdana', 'sans-serif'">Location of Incident:</h4>
       <div id="report-map" data-tap-disabled="true"></div>
-      <div class="list card">
-            <div class="item item-body">
                 <form class="list">
                     <label class="item item-input" name="locationSearch">
                         <input type="text" ng-model="string" placeholder="Search Locations">
                     </label>
                 </form>
-            </div>
-        </div>
+
 
         <form class="list">
             <label class="item item-select" name="category">
@@ -29,6 +29,6 @@
                 <input type="text" ng-model="description" placeholder="What happened?">
             </label>
         </form>
-        <input type="submit" value="Report" ng-click="submitReport(category, description)" id="report-button4" class="button button-balanced  button-block"> <!--ui-sref="safe"-->
+        <input type="submit" value="Report" ng-click="submitReport(category, description)" id="report-button4" class="button main-button button-block">
     </ion-content>
 </ion-view>
