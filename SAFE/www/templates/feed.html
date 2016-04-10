@@ -1,6 +1,6 @@
 <ion-view title="Feed" id="page3">
   <ion-nav-buttons side="left">
-    <a class="button nav-button" href="#/safe">
+    <a class="button nav-button" nav-direction="back" href="#/safe">
       Home
     </a>
   </ion-nav-buttons>
@@ -13,18 +13,25 @@
         <div class="report-text">
           <strong> Location:</strong> {{report.address}} <br>
           <strong> Description: </strong> {{report.description}} <br>
+          <strong> Date: </strong> {{report.created_at | date: 'short'}} <br>
         </div>
 
         <div class="pull-left report-text">
           <i class="icon ion-alert called911-tag energized" ng-if="report.called_911 == true"></i>
-        </div> <br>
+        </div>
+        <br>
       </div>
-      <div class="comments" class="item item-text-wrap" style="display: flex;">
-          Here is my comment
+
+      <div ng-repeat="comment in report.answers" class="comments item item-text-wrap" style="display: flex">
+          <p style="color:grey">{{comment.created_at | date: 'short'}}</p>&emsp;{{comment.content}}
       </div>
+
       <label class="item item-input " name="comment">
-        <input type="text" ng-model="string" placeholder="Comment...">
+        <input type="text" ng-model="newComment" placeholder="Comment..." class="item item-input">
       </label>
+
+      <input type="submit" value="Submit" ng-click="submitComment(report.id, newComment)" class="button button-stable pull-right">
+
     </div>
   </ion-content>
 </ion-view>

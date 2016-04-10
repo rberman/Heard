@@ -242,14 +242,13 @@ angular.module('app.controllers', [])
     var lon = $scope.myLocation.getPosition().lng();
 
     Reports.post({latitude: lat, longitude: lon, called_911: $scope.called_911, category_id: category, description: description});
-    console.log("called 911: " + $scope.called_911);
     console.log("Posted successfully");
     document.location.href = '#/main';
   };
 })
 
 
-.controller('feedCtrl', function($scope, Reports) {
+.controller('feedCtrl', function($scope, $window, Reports, Comment) {
 
   Reports.query().$promise.then(function(data) {
     $scope.reports = data;
@@ -260,6 +259,14 @@ angular.module('app.controllers', [])
     if (category_id == 1) return "secondary-color"; // verbal
     if (category_id == 2) return "primary-color"; // physical
     if (category_id == 3) return "tertiary-color"; // other
+  };
+
+  $scope.submitComment = function(id, text) {
+    Comment.post({report_id: id, content: text});
+    Reports.query().$promise.then(function(data) {
+      $scope.reports = data;
+      console.log("reloaded reports");
+    });
   }
 
 });
