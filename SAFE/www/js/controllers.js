@@ -18,7 +18,7 @@ angular.module('app.controllers', [])
     console.log($scope.reports);
   });
 
-  // Display the markers on the map
+  // Display the markers on the map (used in initMap)
   function displayMarkers() {
     // For loop that runs through the info on markersData making it possible to createMarker function to create the markers
     for (var i = 0; i < $scope.reports.length; i++) {
@@ -29,7 +29,7 @@ angular.module('app.controllers', [])
     }
   }
 
-  // Creates each marker and sets info window content
+  // Creates each marker and sets info window content (used in displayMarkers)
   function createMarker(latlng, description, color){
     var marker = new google.maps.Marker({
       map: $scope.map,
@@ -38,9 +38,7 @@ angular.module('app.controllers', [])
       icon: color
     });
 
-    // This event expects a click on a marker
-    // When this event is fired the infowindow content is created
-    // and the infowindow is opened
+    // Open an infoWindow when a marker is clicked
     google.maps.event.addListener(marker, 'click', function() {
       var contentString = "<strong>Incident</strong>: " + description;
       $scope.infoWindow.setContent(contentString);
@@ -99,7 +97,7 @@ angular.module('app.controllers', [])
     });
   }
 
-  // Google maps map initiation function
+  // Google maps map initiation function, uses displayMarkers, createMarker, and initAutocomplete
   $scope.initMap = function() {
     //google.maps.event.addDomListener(window, 'load', function() {
       var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
@@ -139,6 +137,57 @@ angular.module('app.controllers', [])
 .controller('reportCtrl', function($scope, $ionicPopup, Reports) {
   $scope.called_911 = false;
 
+  // Google Map Search Box with Autocomplete
+  function initAutocomplete() {
+    // Create the search box and link it to the UI element.
+    var input = document.getElementById('searchBox');
+    var searchBox = new google.maps.places.SearchBox(input);
+    //$scope.map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(input); //puts search bar in map window
+
+    // Bias the SearchBox results towards current map's viewport.
+    $scope.map.addListener('bounds_changed', function () {
+      searchBox.setBounds($scope.map.getBounds());
+    });
+
+    var markers = [];
+    // Listen for the event fired when the user selects a prediction and retrieve
+    // more details for that place.
+    searchBox.addListener('places_changed', function () {
+      var places = searchBox.getPlaces();
+
+      if (places.length == 0) {
+        return;
+      }
+
+      // Clear out the old markers.
+      markers.forEach(function (marker) {
+        marker.setMap(null);
+      });
+      markers = [];
+
+      // For each place, get the icon, name and location.
+      var bounds = new google.maps.LatLngBounds();
+      places.forEach(function (place) {
+
+        // Create a marker for each place.
+        markers.push(new google.maps.Marker({
+          map: $scope.map,
+          title: place.name,
+          position: place.geometry.location
+        }));
+
+        if (place.geometry.viewport) {
+          // Only geocodes have viewport.
+          bounds.union(place.geometry.viewport);
+        } else {
+          bounds.extend(place.geometry.location);
+        }
+      });
+      $scope.map.fitBounds(bounds);
+      $scope.map.setZoom(16);
+    });
+  }
+
   $scope.initReportMap = function() {
     //google.maps.event.addDomListener(window, 'load', function() {
       var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
@@ -163,6 +212,7 @@ angular.module('app.controllers', [])
       });
 
       $scope.map = map;
+      initAutocomplete();
     //});
   };
 
