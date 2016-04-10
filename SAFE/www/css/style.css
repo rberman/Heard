@@ -63,5 +63,6 @@
 
 .comments {
   padding: 10px;
+  display: flex;
 }
 
