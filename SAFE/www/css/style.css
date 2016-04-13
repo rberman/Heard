@@ -78,3 +78,14 @@
 .disp-icon {
   margin-right: 10px;
 }
+
+.comment-input {
+  float: left;
+  width:80%;
+}
+
+.comment-button {
+  float:right;
+  position:absolute;
+  width:20%;
+}
