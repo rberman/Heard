@@ -98,7 +98,6 @@ angular.module('app.controllers', [])
 
   // Google maps map initiation function, uses displayMarkers, createMarker, and initAutocomplete
   $scope.initMap = function() {
-    //google.maps.event.addDomListener(window, 'load', function() {
       var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
 
       var mapOptions = {
@@ -129,7 +128,6 @@ angular.module('app.controllers', [])
           $scope.infoWindow.close();
         });
       });
-    //});
   }
 })
 
@@ -188,7 +186,6 @@ angular.module('app.controllers', [])
   }
 
   $scope.initReportMap = function() {
-    //google.maps.event.addDomListener(window, 'load', function() {
       var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
 
       var mapOptions = {
@@ -212,7 +209,6 @@ angular.module('app.controllers', [])
 
       $scope.map = map;
       initAutocomplete();
-    //});
   };
 
 
