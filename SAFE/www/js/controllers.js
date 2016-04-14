@@ -243,16 +243,23 @@ angular.module('app.controllers', [])
     document.location.href = '#/main';
   };
 
-  // Logic to control the category button selection:
+  ////////////////////////////////////////////////////////
+  // LOGIC TO CONTROL THE CATEGORY BUTTON SELECTION:
+  // Initialized button states
   $scope.verbal = "button-stable";
   $scope.physical = "button-stable";
   $scope.other = "button-stable";
   $scope.selected = '0';
+
+  // Given a category, returns the button color
   $scope.getCatButtonState = function(category) {
     if (category == 'verbal') return $scope.verbal;
     if (category == 'physical') return $scope.physical;
     if (category == 'other') return $scope.other;
   };
+
+  // Selects a button; only allows one category to be selected at a time
+  // Updates button colors and selected variable
   $scope.selectCategory = function(category) {
     $scope.resetCategories();
     if (category == 'verbal') {
@@ -268,11 +275,14 @@ angular.module('app.controllers', [])
       $scope.selected = '3';
     }
   };
+
+  // Helper method that resets all buttons to unselected
   $scope.resetCategories = function() {
     $scope.verbal = 'button-stable';
     $scope.physical = 'button-stable';
     $scope.other = 'button-stable';
-  }
+  };
+  ////////////////////////////////////////////////////////
 })
 
 
