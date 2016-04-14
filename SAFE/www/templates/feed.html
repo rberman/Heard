@@ -17,7 +17,7 @@
     </div>
 
     <!--Report-->
-    <div class="card " ng-repeat="report in reports">
+    <form class="card " ng-repeat="report in reports">
       <div class="item item-text-wrap" style="display: flex;">
 
         <!--Color tag for category-->
@@ -41,12 +41,12 @@
           <p style="color:grey">{{comment.created_at | date: 'short'}}</p>&emsp;{{comment.content}}
       </div>
 
-      <div class="">
+      <form ng-submit="submitComment(report.id, newComment)" class="">
         <label class="item item-input comment-input" name="comment" >
           <input type="text" ng-model="newComment" placeholder="Comment..." class="item item-input">
         </label>
         <input type="submit" value="Submit" ng-click="submitComment(report.id, newComment)" class="button button-light pull-right comment-button">
-      </div>
+      </form>
 
 
     </div>
