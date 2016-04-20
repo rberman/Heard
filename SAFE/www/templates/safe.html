@@ -5,10 +5,9 @@
     <ion-content overflow-scroll="true" padding="true" class="has-header" ng-init="initMap()">
 
       <!--Search box-->
-      <label class="item item-input" name="locationSearch">
-          <input id="searchBox" class="item item-input" type="text" ng-model="string" placeholder="Search for a location...">
-      </label>
-
+      <div class="item item-input" name="locationSearch" data-tap-disabled="true">
+          <input id="searchBox" class="item item-input" type="text" ng-model="string" ng-focus="disableTap()" placeholder="Search for a location...">
+      </div>
       <!--Map-->
       <div id="map" class="item" data-tap-disabled="true"></div>
 
