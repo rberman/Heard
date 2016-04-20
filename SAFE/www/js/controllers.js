@@ -282,7 +282,7 @@ angular.module('app.controllers', [])
 })
 
 
-.controller('feedCtrl', function($scope, $window, Reports, Comment) {
+.controller('feedCtrl', function($scope, $window, $ionicPopup, Reports, Comment) {
 
   Reports.query().$promise.then(function(data) {
     $scope.reports = data;
@@ -301,6 +301,31 @@ angular.module('app.controllers', [])
       $scope.reports = data;
       console.log("reloaded reports");
     });
-  }
+  };
+
+   $scope.showConfirm = function() {
+     var confirmPopup = $ionicPopup.confirm({
+       title: 'Report Comment',
+       template: 'Would you like to report this comment as abusive?'
+     });
+     confirmPopup.then(function(res) {
+       if(res) {
+         $scope.reportReported = true;
+       }
+     });
+   };
+
+  //TODO: Report comment logic
+  $scope.reportReported = 'stable';
+  $scope.commentReported = 'stable';
+
+  $scope.reportReport = function() {
+    $scope.reportReported = 'assertive';
+  };
+  $scope.reportComment = function() {
+    $scope.commentReported = 'assertive';
+  };
+
+
 
 });

@@ -24,11 +24,14 @@
         <div class="pull-right feed-report">
           <i class="icon ion-ios-pricetag category-tag {{getColor(report.category_id)}}"></i>
         </div>
+        <!--Text in the report-->
         <div class="report-text">
           <strong> Location:</strong> {{report.address}} <br>
           <strong> Description: </strong> {{report.description}} <br>
           <strong> Date: </strong> {{report.created_at | date: 'short'}} <br>
         </div>
+        <!--Report button for reports-->
+        <i class="ion-flag {{reportReported}}" ng-click="showConfirm()"></i>
 
         <!--Exclamation Point (if called 911)-->
         <div class="pull-left report-text">
@@ -38,7 +41,8 @@
       </div>
 
       <div ng-repeat="comment in report.answers" class="comments item item-text-wrap" style="display: flex">
-          <p style="color:grey">{{comment.created_at | date: 'short'}}</p>&emsp;{{comment.content}}
+          <p style="color:grey">{{comment.created_at | date: 'short'}}&emsp;{{comment.content}}</p>
+          <!--<i class="ion-flag {{commentReported}}" style="margin-right: 0 " ng-click="reportComment()"></i>-->
       </div>
 
       <form ng-submit="submitComment(report.id, newComment)" class="">
@@ -49,7 +53,7 @@
       </form>
 
 
-    </div>
+    </form>
   </ion-content>
 </ion-view>
 
