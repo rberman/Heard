@@ -4,7 +4,6 @@ angular.module('app.controllers', [])
 //  Cite http://ionicframework.com/docs/api/service/$ionicPopup/
 
 .controller('reportCtrl', function($scope) {
-
 })
 
 .controller('safeCtrl', function($scope, $ionicLoading, Reports) {
@@ -226,8 +225,6 @@ angular.module('app.controllers', [])
     //});
   };
 
-  // Handles change of drop-down menu selection
-  $scope.selectCategory = function(category) {};
 
   // A confirm dialog for call button
   $scope.showConfirm = function() {
@@ -247,14 +244,45 @@ angular.module('app.controllers', [])
 
 
   // Submit report data
-  $scope.submitReport = function(category, description) {
+  $scope.submitReport = function(description) {
     var lat = $scope.myLocation.getPosition().lat();
     var lon = $scope.myLocation.getPosition().lng();
 
-    Reports.post({latitude: lat, longitude: lon, called_911: $scope.called_911, category_id: category, description: description});
+    Reports.post({latitude: lat, longitude: lon, called_911: $scope.called_911, category_id: $scope.selected, description: description});
     console.log("Posted successfully");
     document.location.href = '#/main';
   };
+
+  // Logic to control the category button selection:
+  $scope.verbal = "button-stable";
+  $scope.physical = "button-stable";
+  $scope.other = "button-stable";
+  $scope.selected = '0';
+  $scope.getCatButtonState = function(category) {
+    if (category == 'verbal') return $scope.verbal;
+    if (category == 'physical') return $scope.physical;
+    if (category == 'other') return $scope.other;
+  };
+  $scope.selectCategory = function(category) {
+    $scope.resetCategories();
+    if (category == 'verbal') {
+      $scope.verbal = 'button-royal';
+      $scope.selected = '1';
+    }
+    else if (category == 'physical') {
+      $scope.physical = 'button-energized';
+      $scope.selected = '2';
+    }
+    else if (category == 'other') {
+      $scope.other = 'button-positive';
+      $scope.selected = '3';
+    }
+  };
+  $scope.resetCategories = function() {
+    $scope.verbal = 'button-stable';
+    $scope.physical = 'button-stable';
+    $scope.other = 'button-stable';
+  }
 })
 
 

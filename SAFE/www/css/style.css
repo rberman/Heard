@@ -88,4 +88,14 @@
   float:right;
   position:absolute;
   width:20%;
+  color: blue !important;
 }
+
+h4 {
+  font-family: 'Verdana', 'sans-serif';
+  color: grey;
+  margin-bottom:0;
+  margin-top: 0;
+
+}
+
