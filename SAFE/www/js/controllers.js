@@ -50,7 +50,6 @@ angular.module('app.controllers', [])
     // Create the search box and link it to the UI element.
     var input = document.getElementById('searchBox');
     var searchBox = new google.maps.places.SearchBox(input);
-    //$scope.map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(input); //puts search bar in map window
 
     // Bias the SearchBox results towards current map's viewport.
     $scope.map.addListener('bounds_changed', function () {
@@ -132,7 +131,7 @@ angular.module('app.controllers', [])
     //});
   };
 
-  $scope.disableTap = function(){  //TODO supposedly search bar bug fix but isn't working yet
+  $scope.disableTap = function(){ //to enable clicking on results of search
     container = document.getElementsByClassName('pac-container');
     // disable ionic data tab
     angular.element(container).attr('data-tap-disabled', 'true');

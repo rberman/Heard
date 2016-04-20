@@ -17,9 +17,9 @@
       <!--Google Map for reporting incident-->
       <h4>Drag pin to location of incident:</h4>
       <!--Search box-->
-      <label class="item item-input" name="locationSearch">
-        <input id="searchBox" class="item item-input" type="text" ng-model="string" placeholder="Search for a location...">
-      </label>
+      <div class="item item-input" name="locationSearch" data-tap-disabled="true">
+        <input id="searchBox" class="item item-input" type="text" ng-model="string" ng-focus="disableTap()" placeholder="Search for a location...">
+      </div>
 
       <div id="report-map" data-tap-disabled="true" class="item"></div>
 
