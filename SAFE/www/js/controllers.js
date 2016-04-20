@@ -131,6 +131,16 @@ angular.module('app.controllers', [])
         });
       });
     //});
+  };
+
+  $scope.disableTap = function(){  //TODO supposedly search bar bug fix but isn't working yet
+    container = document.getElementsByClassName('pac-container');
+    // disable ionic data tab
+    angular.element(container).attr('data-tap-disabled', 'true');
+    // leave input field if google-address-entry is selected
+    angular.element(container).on("click", function(){
+      document.getElementById('searchBox').blur();
+    });
   }
 })
 
