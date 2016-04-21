@@ -253,6 +253,7 @@ angular.module('app.controllers', [])
   // Initialized button states
   $scope.verbal = "button-stable";
   $scope.physical = "button-stable";
+  $scope.systemic = "button-stable";
   $scope.other = "button-stable";
   $scope.selected = '0';
 
@@ -260,6 +261,7 @@ angular.module('app.controllers', [])
   $scope.getCatButtonState = function(category) {
     if (category == 'verbal') return $scope.verbal;
     if (category == 'physical') return $scope.physical;
+    if (category == 'systemic') return $scope.systemic;
     if (category == 'other') return $scope.other;
   };
 
@@ -268,15 +270,20 @@ angular.module('app.controllers', [])
   $scope.selectCategory = function(category) {
     $scope.resetCategories();
     if (category == 'verbal') {
-      $scope.verbal = 'button-royal';
+      $scope.verbal = 'button-calm';
       $scope.selected = '1';
     }
     else if (category == 'physical') {
       $scope.physical = 'button-energized';
       $scope.selected = '2';
     }
+    else if (category == 'systemic') {
+      $scope.systemic = 'button-royal';
+      $scope.selected = '3'
+    }
     else if (category == 'other') {
       $scope.other = 'button-positive';
+      // TODO: Update database value
       $scope.selected = '3';
     }
   };
@@ -285,6 +292,7 @@ angular.module('app.controllers', [])
   $scope.resetCategories = function() {
     $scope.verbal = 'button-stable';
     $scope.physical = 'button-stable';
+    $scope.systemic = 'button-stable';
     $scope.other = 'button-stable';
   };
   ////////////////////////////////////////////////////////
@@ -299,9 +307,10 @@ angular.module('app.controllers', [])
   });
 
   $scope.getColor = function(category_id) {
-    if (category_id == 1) return "secondary-color"; // verbal
-    if (category_id == 2) return "primary-color"; // physical
-    if (category_id == 3) return "tertiary-color"; // other
+    if (category_id == 1) return "calm"; // verbal
+    if (category_id == 2) return "energized"; // physical
+    if (category_id == 3) return "royal"; // systemic
+    if (category_id == 4) return "positive"; // other
   };
 
   $scope.submitComment = function(id, text) {
@@ -312,29 +321,8 @@ angular.module('app.controllers', [])
     });
   };
 
-   $scope.showConfirm = function() {
-     var confirmPopup = $ionicPopup.confirm({
-       title: 'Report Comment',
-       template: 'Would you like to report this comment as abusive?'
-     });
-     confirmPopup.then(function(res) {
-       if(res) {
-         $scope.reportReported = true;
-       }
-     });
-   };
-
-  //TODO: Report comment logic
-  $scope.reportReported = 'stable';
-  $scope.commentReported = 'stable';
-
-  $scope.reportReport = function() {
-    $scope.reportReported = 'assertive';
-  };
-  $scope.reportComment = function() {
-    $scope.commentReported = 'assertive';
-  };
-
-
+  $scope.getUpVotes = function() {
+    return Math.ceil(Math.random() * 9);
+  }
 
 });

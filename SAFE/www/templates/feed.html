@@ -8,10 +8,11 @@
     <div class="card">
       <div class="item item-text-wrap" style="display: flex;">
         <div class="pull-right feed-report">
-          <i class="icon ion-ios-pricetag disp-icon {{getColor(1)}}"> Verbal</i>
-          <i class="icon ion-ios-pricetag disp-icon {{getColor(2)}}"> Physical</i>
-          <i class="icon ion-ios-pricetag disp-icon {{getColor(3)}}"> Other</i>
-          <i class="icon ion-alert disp-icon energized"> 911 Call</i>
+          <i class="icon ion-ios-pricetag disp-icon key {{getColor(1)}}"> Verbal</i>
+          <i class="icon ion-ios-pricetag disp-icon key {{getColor(2)}}"> Physical</i>
+          <i class="icon ion-ios-pricetag disp-icon key {{getColor(3)}}"> Systemic</i>
+          <i class="icon ion-ios-pricetag disp-icon key {{getColor(4)}}"> Other</i>
+          <!--<i class="icon ion-alert disp-icon energized"> 911 Call</i>-->
         </div>
       </div>
     </div>
@@ -30,13 +31,16 @@
           <strong> Description: </strong> {{report.description}} <br>
           <strong> Date: </strong> {{report.created_at | date: 'short'}} <br>
         </div>
-        <!--Report button for reports-->
-        <i class="ion-flag {{reportReported}}" ng-click="showConfirm()"></i>
+
+        <!--Upvote button for reports-->
+        <i class="up-down ion-chevron-up {{reportReported}}" ng-click="showConfirm()"></i>
+        <p class="up-down">{{getUpVotes()}}</p>
+        <i class="up-down ion-chevron-down {{reportReported}}" ng-click="showConfirm()"></i>
 
         <!--Exclamation Point (if called 911)-->
-        <div class="pull-left report-text">
-          <i class="icon ion-alert called911-tag energized" ng-if="report.called_911 == true"></i>
-        </div>
+        <!--<div class="pull-left report-text">-->
+          <!--<i class="icon ion-alert called911-tag energized" ng-if="report.called_911 == true"></i>-->
+        <!--</div>-->
         <br>
       </div>
 

@@ -7,10 +7,10 @@
     <ion-content overflow-scroll="true" padding="true" class="has-header" ng-init="initReportMap()">
 
       <!--Call 911 button and popup-->
-      <a ng-click="showConfirm()" id="report-button3"
-         class="button important-button button-large button-block">
-        Call 911
-      </a>
+      <!--<a ng-click="showConfirm()" id="report-button3"-->
+         <!--class="button important-button button-large button-block">-->
+        <!--Call 911-->
+      <!--</a>-->
 
 
 
@@ -28,9 +28,10 @@
       <!--Select category-->
       <div>
         <h4>Select the type of incident:</h4>
-        <button class="button {{getCatButtonState('verbal')}}" ng-click="selectCategory('verbal')" id="verbal">Verbal</button>
-        <button class="button {{getCatButtonState('physical')}}" ng-click="selectCategory('physical')" id="physical">Physical</button>
-        <button class="button {{getCatButtonState('other')}}" ng-click="selectCategory('other')" id="other">Other</button>
+        <button class="button cat-button {{getCatButtonState('verbal')}}" ng-click="selectCategory('verbal')" id="verbal">Verbal</button>
+        <button class="button cat-button {{getCatButtonState('physical')}}" ng-click="selectCategory('physical')" id="physical">Physical</button>
+        <button class="button cat-button {{getCatButtonState('systemic')}}" ng-click="selectCategory('systemic')" id="systemic">Systemic</button>
+        <button class="button cat-button {{getCatButtonState('other')}}" ng-click="selectCategory('other')" id="other">Other</button>
       </div>
 
 

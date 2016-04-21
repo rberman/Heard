@@ -2,8 +2,14 @@
   height: 100%;
 }
 
+.nav-bar {
+  background: #002b80;
+  color: white;
+}
+
 .bar-positive {
-  background: #5a163a !important;
+  /*background: #5a163a !important;*/
+  background: #002b80;
 }
 
 #map {
@@ -22,11 +28,6 @@
   margin-right: 25px;
 }
 
-.called911-tag {
-  float: right;
-  font-size: 30px;
-  margin-left: 5px;
-}
 
 .primary-color {
   color: rgb(255, 241, 111);
@@ -40,20 +41,40 @@
   color: #1976D2;
 }
 
+.quadriary-color {
+
+}
+
+.up-down {
+  /*float: right !important;*/
+  /*clear: right !important;*/
+}
+
 .nav-button {
-  background: rgb(255, 241, 111) !important;
-  color: #731850 !important;
+  /*background: rgb(255, 241, 111) !important;*/
+  /*color: #731850 !important;*/
+  background: lightblue !important;
+  color: #002b80 !important;
 }
 
 .main-button {
-  background: #1976D2 !important;
+  /*background: #1976D2 !important;*/
   color: white !important;
+  background: #002b80;
 }
 
 .important-button {
-  background: rgb(255, 241, 111) !important;
-  color: #731850 !important;
+  /*background: rgb(255, 241, 111) !important;*/
+  /*color: #731850 !important;*/
   font-size: 16pt !important;
+  background: #002b80;
+  color: white;
+}
+
+.cat-button {
+  width: 24%;
+  font-size: small;
+  margin-top: 2%;
 }
 
 .feed-report {
@@ -79,6 +100,12 @@
   margin-right: 10px;
 }
 
+.key {
+  /*margin-left: 15px;*/
+  width:25%;
+  font-size: 15px;;
+}
+
 .comment-input {
   float: left;
   width:100%;
@@ -88,7 +115,7 @@
   float:right;
   position:absolute;
   width:20%;
-  color: blue !important;
+  color: #002b80 !important;
 }
 
 h4 {
