@@ -3,7 +3,7 @@
 }
 
 .nav-bar {
-  background: #002b80;
+  background: #001a4b;
   color: white;
 }
 
@@ -53,28 +53,25 @@
 .nav-button {
   /*background: rgb(255, 241, 111) !important;*/
   /*color: #731850 !important;*/
-  background: lightblue !important;
+  background: #b7e9f5 !important;
   color: #002b80 !important;
 }
 
 .main-button {
   /*background: #1976D2 !important;*/
   color: white !important;
-  background: #002b80;
+  background: #003296;
 }
 
 .important-button {
   /*background: rgb(255, 241, 111) !important;*/
   /*color: #731850 !important;*/
   font-size: 16pt !important;
-  background: #002b80;
-  color: white;
 }
 
 .cat-button {
   width: 24%;
   font-size: small;
-  margin-top: 2%;
 }
 
 .feed-report {
@@ -118,11 +115,10 @@
   color: #002b80 !important;
 }
 
-h4 {
+.report-instructions {
   font-family: 'Verdana', 'sans-serif';
   color: grey;
-  margin-bottom:0;
+  margin-bottom:2%;
   margin-top: 0;
-
 }
 

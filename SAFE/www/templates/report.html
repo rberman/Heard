@@ -15,7 +15,7 @@
 
 
       <!--Google Map for reporting incident-->
-      <h4>Drag pin to location of incident:</h4>
+      <h4 class="report-instructions">Drag pin to location of incident:</h4>
       <!--Search box-->
       <div class="item item-input" name="locationSearch" data-tap-disabled="true">
         <input id="searchBox" class="item item-input" type="text" ng-model="string" ng-focus="disableTap()" placeholder="Search for a location...">
@@ -27,7 +27,7 @@
 
       <!--Select category-->
       <div>
-        <h4>Select the type of incident:</h4>
+        <h4 class="report-instructions">Select the type of incident:</h4>
         <button class="button cat-button {{getCatButtonState('verbal')}}" ng-click="selectCategory('verbal')" id="verbal">Verbal</button>
         <button class="button cat-button {{getCatButtonState('physical')}}" ng-click="selectCategory('physical')" id="physical">Physical</button>
         <button class="button cat-button {{getCatButtonState('systemic')}}" ng-click="selectCategory('systemic')" id="systemic">Systemic</button>
@@ -44,6 +44,6 @@
       </form>
 
       <!--Submit button-->
-        <input type="submit" value="Report" ng-click="submitReport(description)" id="report-button4" class="button important-button button-block">
+        <input type="submit" value="Report" ng-click="submitReport(description)" id="report-button4" class="button main-button important-button button-block">
     </ion-content>
 </ion-view>
