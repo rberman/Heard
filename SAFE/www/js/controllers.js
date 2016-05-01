@@ -17,14 +17,21 @@ angular.module('app.controllers', [])
     console.log($scope.reports);
   });
 
+  function getColor(category_id) {
+    if (category_id == 1) return '11c1f3'; // verbal calm
+    if (category_id == 2) return 'ffc900'; // physical energized
+    if (category_id == 3) return '886aea'; // systemic royal
+    if (category_id == 4) return '387ef5'; // other positive
+  }
+
   // Display the markers on the map (used in initMap)
   function displayMarkers() {
     // For loop that runs through the info on markersData making it possible to createMarker function to create the markers
     for (var i = 0; i < $scope.reports.length; i++) {
       var latlng = new google.maps.LatLng($scope.reports[i].latitude, $scope.reports[i].longitude);
       var description = $scope.reports[i].description;
-      var color = 'http://maps.google.com/mapfiles/ms/icons/purple.png'; //TODO add logic to determine color based on category
-      createMarker(latlng, description, color);
+      var icon = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|' + getColor($scope.reports[i].category_id);
+      createMarker(latlng, description, icon);
     }
   }
 
